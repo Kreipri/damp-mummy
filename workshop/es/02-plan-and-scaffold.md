@@ -7,7 +7,13 @@ Antes de escribir código, usemos **Plan Mode** para pensar en la arquitectura. 
 
 ## Tarea 1: Planifica la Arquitectura de la API
 
-1. Cambia a modo **Plan** en Copilot Chat (haz clic en el selector de modo en la parte inferior del panel de chat)
+<!-- track:vscode:start -->
+1. Cambia a modo **Plan** en Copilot Chat (haz clic en el selector de modo en la parte inferior del panel de chat).
+<!-- track:vscode:end -->
+
+<!-- track:cli:start -->
+1. Entra en **plan mode** en Copilot CLI pulsando **Shift+Tab** hasta que cambie el modo, o usa `/plan`.
+<!-- track:cli:end -->
 
 2. Ingresa este prompt:
 
@@ -23,44 +29,68 @@ Antes de escribir código, usemos **Plan Mode** para pensar en la arquitectura. 
    - Sugiere cambios si algo no te convence
    - Itera hasta que estés satisfecho con el enfoque
 
-4. Una vez que estés conforme con el plan, pide a Copilot que lo implemente — cambia a modo **Agent** y dile que proceda
+<!-- track:vscode:start -->
+4. Cuando estés satisfecho con el plan, pide a Copilot que lo implemente: cambia a modo **Agent** y dile que continúe.
+<!-- track:vscode:end -->
 
-5. **Resultado:** Ahora deberías tener una ruta de API creada en:
+<!-- track:cli:start -->
+4. Cuando estés satisfecho con el plan, dile a Copilot CLI que continúe con la implementación.
+5. Revisa los cambios resultantes con `/diff` antes de aprobarlos.
+<!-- track:cli:end -->
+
+6. **Resultado:** Ahora deberías tener una ruta de API creada en:
    ```
    src/pages/api/contributions/[username].ts
    ```
 
 ## Tarea 2: Prueba la API
 
-1. Asegúrate de que tu servidor de desarrollo esté en ejecución, luego prueba el endpoint:
+> **⚠️ ¿No ves los cambios?** Si el servidor de desarrollo no detecta la nueva ruta, detenlo (`Ctrl+C`) y reinícialo con `npm run dev`.
+
+1. Asegúrate de que el servidor de desarrollo esté en ejecución y prueba el endpoint:
 
    ```bash
    curl http://localhost:4321/api/contributions/octocat
    ```
 
-2. Deberías ver datos de contribuciones en formato JSON
+2. Deberías ver datos de contribuciones en formato JSON.
 
-3. Prueba también el caso de error — intenta con un nombre de usuario inválido y confirma que devuelve una respuesta de error apropiada
+3. Prueba también el caso de error: usa un nombre de usuario no válido y confirma que devuelve una respuesta adecuada.
 
 ## Tarea 3: Planifica la Página de Batalla
 
+<!-- track:vscode:start -->
 1. Mantente en modo **Plan** e ingresa este prompt:
+<!-- track:vscode:end -->
+
+<!-- track:cli:start -->
+1. Mantente en plan mode (o ejecuta `/plan`) e ingresa este prompt:
+<!-- track:cli:end -->
 
    ```
    Now I need the main page. Plan a battle page for "Mona Mayhem - GitHub
    Contribution Battle Arena" with: two username inputs (Player 1 and Player 2),
-   a battle button, and a results area. Use a dark theme with the Press Start 2P
-   retro gaming font from Google Fonts. Plan the HTML structure, basic styling,
+   a battle button, and a results area. Keep the UI simple — don't over-engineer
+   the layout or styling at this stage. Plan the HTML structure, basic styling,
    and how the battle interaction will work.
    ```
 
 2. **Revisa e itera** sobre el plan — haz preguntas, sugiere cambios, refina el enfoque
 
+<!-- track:vscode:start -->
 3. Cuando estés satisfecho, cambia a modo **Agent** y deja que Copilot construya la página
+<!-- track:vscode:end -->
+
+<!-- track:cli:start -->
+3. Cuando estés satisfecho, pide a Copilot CLI que implemente el plan aprobado.
+4. Usa `/diff` para inspeccionar el esqueleto de HTML y CSS antes de aprobarlo.
+<!-- track:cli:end -->
 
 ## Tarea 4: Verifica la Estructura
 
-1. Abre http://localhost:4321 en tu navegador
+> **⚠️ ¿No ves los cambios?** Si la página no tiene el aspecto esperado o no se ha actualizado, detén el servidor de desarrollo (`Ctrl+C`), reinícialo con `npm run dev` y actualiza el navegador.
+
+1. Abre http://localhost:4321 en tu navegador.
 
 2. Deberías ver:
    - El título del juego
